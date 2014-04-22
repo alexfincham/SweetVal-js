@@ -161,7 +161,7 @@ var f = function() {
       this.computed = true;
    }
    var km = unitRecord['makeUnit'].call(null, "kilometer");
-   var res = (getValue(this.arg) / 1000) * km;
+   var res = proxyMult((getValue(this.arg) / 1000), km);
    return res;
 };
 
@@ -171,6 +171,7 @@ function delay(thunk) {
       if(!thunk.computed) {
          r = thunk.c();
       }
+      console.log("delay: z: returning r = "+r+"\nrvalue = "+getValue(r));
       return r;
    }
 
